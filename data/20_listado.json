@@ -1,0 +1,41 @@
+{
+  "codigo": "20",
+  "materia": "Territorios del Capitalismo Global",
+  "listado": [
+    {
+      "Orden": "1",
+      "Apellido y Nombre": "FUENZALIDA, GUILLERMO RAMON",
+      "Puntos": "311,00"
+    },
+    {
+      "Orden": "2",
+      "Apellido y Nombre": "GRANADO, MARIA CRISTINA",
+      "Puntos": "291,60"
+    },
+    {
+      "Orden": "3",
+      "Apellido y Nombre": "UNCOS, ROSA DEL HUERTO",
+      "Puntos": "273,65"
+    },
+    {
+      "Orden": "4",
+      "Apellido y Nombre": "CALIZAYA, PABLO MERARDO MARCIAL",
+      "Puntos": "247,17"
+    },
+    {
+      "Orden": "5",
+      "Apellido y Nombre": "CAÑISARES, IVANA KARINA",
+      "Puntos": "180,50"
+    },
+    {
+      "Orden": "6",
+      "Apellido y Nombre": "GUTIERREZ, ROMINA ROCIO MACARENA",
+      "Puntos": "100,00"
+    },
+    {
+      "Orden": "7",
+      "Apellido y Nombre": "PAZ, MONICA ELIZABET",
+      "Puntos": "178,00"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "codigo": "42",
+  "materia": "FISICAQUIMICA",
+  "listado": [
+    {
+      "Orden": "1",
+      "Apellido y Nombre": "AGUIRRE, ROLANDO CARLOS",
+      "Puntos": "430,50"
+    },
+    {
+      "Orden": "2",
+      "Apellido y Nombre": "ALTOMARE SIGLER, NANCY ROSANA",
+      "Puntos": "336,00"
+    },
+    {
+      "Orden": "3",
+      "Apellido y Nombre": "TOLABA VILLALOBO, ELENA CECILIA",
+      "Puntos": "303,00"
+    },
+    {
+      "Orden": "4",
+      "Apellido y Nombre": "SORIANO, SANDRA CLELIA",
+      "Puntos": "248,00"
+    },
+    {
+      "Orden": "5",
+      "Apellido y Nombre": "ARTIGAS PERALTA, PAULA MARIANELA",
+      "Puntos": "236,00"
+    },
+    {
+      "Orden": "6",
+      "Apellido y Nombre": "MARTINEZ AYALA, NORMA BEATRIZ",
+      "Puntos": "223,00"
+    },
+    {
+      "Orden": "7",
+      "Apellido y Nombre": "BAZOALTO, GUSTAVO GERARDO ERNESTO",
+      "Puntos": "212,80"
+    },
+    {
+      "Orden": "8",
+      "Apellido y Nombre": "ORTEGA, MARIA DEL CARMEN GUADALUPE ~",
+      "Puntos": "191,50"
+    },
+    {
+      "Orden": "9",
+      "Apellido y Nombre": "GUZMAN, MONICA GRACIELA",
+      "Puntos": "183,50"
+    },
+    {
+      "Orden": "10",
+      "Apellido y Nombre": "RUBIALES, RAFAEL ANTONIO",
+      "Puntos": "181,50"
+    },
+    {
+      "Orden": "11",
+      "Apellido y Nombre": "MADRIGAL, GERARDO ADRIAN",
+      "Puntos": "174,50"
+    },
+    {
+      "Orden": "12",
+      "Apellido y Nombre": "MONTEMAYOR, NOEMI GRACIELA",
+      "Puntos": "174,00"
+    },
+    {
+      "Orden": "13",
+      "Apellido y Nombre": "ARIAS, RUBEN FERNANDO",
+      "Puntos": "155,00"
+    },
+    {
+      "Orden": "14",
+      "Apellido y Nombre": "NUÑEZ, MONICA VIRGINIA",
+      "Puntos": "151,50"
+    },
+    {
+      "Orden": "15",
+      "Apellido y Nombre": "PAEZ, NAIR CARMEN VALERIA",
+      "Puntos": "149,00"
+    },
+    {
+      "Orden": "16",
+      "Apellido y Nombre": "CASTILLO, ANDREA CAROLINA",
+      "Puntos": "130,00"
+    },
+    {
+      "Orden": "17",
+      "Apellido y Nombre": "GUTIERREZ, EMILIA VERONICA",
+      "Puntos": "137,50"
+    },
+    {
+      "Orden": "18",
+      "Apellido y Nombre": "CASTILLO, MARIA SUSANA",
+      "Puntos": "125,70"
+    },
+    {
+      "Orden": "19",
+      "Apellido y Nombre": "AGUILERA MOSCA, HUGO ERNESTO",
+      "Puntos": "65,00"
+    },
+    {
+      "Orden": "20",
+      "Apellido y Nombre": "CASIMIRO, BEATRIZ ARGENTINA",
+      "Puntos": "265,50"
+    },
+    {
+      "Orden": "21",
+      "Apellido y Nombre": "ESCOBAR, NIEVES ELENA",
+      "Puntos": "178,00"
+    },
+    {
+      "Orden": "22",
+      "Apellido y Nombre": "ROMAN, FLORENCIA EMANUELA",
+      "Puntos": "150,00"
+    },
+    {
+      "Orden": "23",
+      "Apellido y Nombre": "APAZA, ELIANA GISEL",
+      "Puntos": "108,00"
+    },
+    {
+      "Orden": "24",
+      "Apellido y Nombre": "NUÑEZ, MIGUEL ESTEBAN",
+      "Puntos": "43,50"
+    },
+    {
+      "Orden": "25",
+      "Apellido y Nombre": "APAZA, GABRIELA ROMINA LUISA",
+      "Puntos": "41,50"
+    },
+    {
+      "Orden": "26",
+      "Apellido y Nombre": "PEÑARANDA, ALICIAROSARIO",
+      "Puntos": "32,50"
+    },
+    {
+      "Orden": "27",
+      "Apellido y Nombre": "TEJERINA ALVARADO, FRANCO AGUSTIN",
+      "Puntos": "26,00"
+    },
+    {
+      "Orden": "28",
+      "Apellido y Nombre": "MAC FARLIN, URSULA BEATRIZ",
+      "Puntos": "22,00"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+# generate_doc.py
+# Script para generar la planilla de designaciones a partir del CSV de méritos
+# Requiere: python-docx, csv
+
+import os
+import csv
+from docx import Document
+
+
+def solicitar_datos():
+    datos = {}
+    datos['codigo'] = input("Código de materia (p.ej. 42): ").strip()
+    datos['materia'] = input("_MATERIA (p.ej. (42) FISICAQUIMICA): ").strip()
+    datos['curso'] = input("_CURSO (p.ej. '1º', '2º'): ").strip()
+    datos['ciclo'] = input("_CICLO (p.ej. 'C.B'): ").strip()
+    datos['hscat'] = input("_Hs. Cátedra (p.ej. 18): ").strip()
+    datos['turno'] = input("_Turno (p.ej. 'Mañana'): ").strip()
+    datos['causal'] = input("_Causal de la vacante: ").strip()
+    datos['caracter'] = input("_Carácter (Interino/Suplente): ").strip()
+    print("Ingrese el horario a cubrir:")
+    datos['HSLUNES'] = input("  _HSLUNES: ").strip()
+    datos['HSMARTES'] = input("  _HSMARTES: ").strip()
+    datos['HSMIERCOLES'] = input("  _HSMIERCOLES: ").strip()
+    datos['HSJUEVES'] = input("  _HSJUEVES: ").strip()
+    datos['HSVIERNES'] = input("  _HSVIERNES: ").strip()
+    return datos
+
+
+def leer_csv_de_meritos(codigo):
+    csv_path = os.path.join('data', f"{codigo}.csv")
+    if not os.path.exists(csv_path):
+        raise FileNotFoundError(f"No existe el archivo CSV: {csv_path}")
+    meritos = []
+    with open(csv_path, newline='', encoding='utf-8') as f:
+        reader = csv.reader(f)
+        try:
+            headers = next(reader)
+        except StopIteration:
+            raise ValueError("El CSV de méritos está vacío")
+        # Índices de campos clave
+        try:
+            idx_orden = headers.index('Orden')
+            idx_nombre = headers.index('Apellido y Nombre')
+        except ValueError:
+            raise ValueError("El CSV debe contener los encabezados 'Orden' y 'Apellido y Nombre'")
+        # Suponemos que Puntos es la última columna de cada fila
+        idx_puntos = len(headers) - 1
+        for row in reader:
+            orden = row[idx_orden].strip() if idx_orden < len(row) else ''
+            nombre = row[idx_nombre].strip() if idx_nombre < len(row) else ''
+            puntos = row[idx_puntos].strip() if idx_puntos < len(row) else ''
+            meritos.append({'Orden': orden, 'Apellido y Nombre': nombre, 'Puntos': puntos})
+    return meritos
+
+
+def generar_documento(datos, meritos):
+    doc = Document()
+    doc.add_heading('PLANILLA DE DESIGNACIONES DE PERSONAL DOCENTE INTERINO Y SUPLENTE', level=1)
+    doc.add_paragraph('Establecimiento: E.E.T. N° 3140 “Dr. Francisco de Gurruchaga”')
+    doc.add_paragraph(f"Apellido y Nombre del Designado: ____________________________")
+    doc.add_paragraph(
+        f"Espacio Curricular: {datos['materia']}   Curso: {datos['curso']}   "
+        f"Ciclo: {datos['ciclo']}   Nivel: Secundario   Hs. Cát.: {datos['hscat']}   "
+        f"Turno: {datos['turno']}"
+    )
+    doc.add_paragraph(f"Causal de la vacante: {datos['causal']}   Carácter: {datos['caracter']}")
+
+    doc.add_paragraph('\nHorario a cubrir')
+    tabla_hor = doc.add_table(rows=2, cols=5)
+    dias = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES']
+    for idx, dia in enumerate(dias):
+        tabla_hor.rows[0].cells[idx].text = dia
+        tabla_hor.rows[1].cells[idx].text = datos.get(f'HS{dia}', '')
+
+    doc.add_paragraph('\nNotificación a docentes con mayor puntaje')
+    notif = doc.add_table(rows=1, cols=6)
+    for i, title in enumerate(['N°', 'Puntos', 'Apellido y Nombre', 'Decisión', 'Firma', 'Fecha']):
+        notif.rows[0].cells[i].text = title
+    for docente in meritos:
+        row = notif.add_row().cells
+        row[0].text = docente['Orden']
+        row[1].text = docente['Puntos']
+        row[2].text = docente['Apellido y Nombre']
+
+    doc.add_paragraph('\nObservaciones:_______________________________________')
+    doc.add_paragraph('\n__________________________                       __________________________')
+    doc.add_paragraph('Secretario/a                                              Director/a')
+
+    salida = f"designacion_{datos['codigo']}.docx"
+    doc.save(salida)
+    print(f"Documento generado: {salida}")
+
+
+def main():
+    datos = solicitar_datos()
+    meritos = leer_csv_de_meritos(datos['codigo'])
+    generar_documento(datos, meritos)
+
+if __name__ == '__main__':
+    main()

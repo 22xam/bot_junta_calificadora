@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+
+# Archivos de salida
+salida.docx
+*.pdf
+
+# Archivos de datos
+*.csv
+*.xlsx
+*.xls
+*.tmp
+*.bak
+
+# Archivos temporales de Word o editores
+~$*
+*.swp
+
+# Archivos JSON temporales
+*.json.bak
+*.json.tmp
+
+# Entornos virtuales
+env/
+venv/
+.venv/
+ENV/
+.VENV/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VSCode
+.vscode/
+
+# Archivos de prueba
+test_*.py
+__tests__/
+
+# Carpeta de pruebas OCR u otros temporales
+/output/
