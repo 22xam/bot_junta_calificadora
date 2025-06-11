@@ -5,12 +5,21 @@ import re
 import os
 
 def cargar_json(path):
+    """
+    Carga datos desde un archivo JSON.
+    Lanza excepciones específicas en caso de error.
+    """
     try:
         with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
-    except Exception as e:
-        print(f"❌ Error al cargar JSON: {e}")
-        sys.exit(1)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Error: El archivo JSON no fue encontrado en la ruta: {path}")
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Error: El archivo JSON está malformado o no es un JSON válido: {path}. Detalle: {e}")
+    except IOError as e: # Captura otros errores de I/O más generales
+        raise IOError(f"Error de entrada/salida al leer el archivo JSON: {path}. Detalle: {e}")
+    except Exception as e: # Para cualquier otra excepción inesperada
+        raise RuntimeError(f"Error inesperado al cargar el archivo JSON: {path}. Detalle: {e}")
 
 def detectar_campos(doc):
     texto = "\n".join(p.text for p in doc.paragraphs)
@@ -20,16 +29,7 @@ def detectar_campos(doc):
                 texto += "\n" + cell.text
     return set(re.findall(r'_\w+', texto))
 
-def preparar_datos(json_data, campos_docx):
-    datos = {
-        "_MATERIA": json_data.get("materia", "")
-    }
-
-    for campo in campos_docx:
-        if campo not in datos:
-            datos[campo] = input(f"🖋️ Ingrese valor para {campo}: ").strip()
-
-    return datos
+# preparar_datos function is removed as per requirements.
 
 def reemplazar_campos(doc, datos):
     for p in doc.paragraphs:
@@ -129,8 +129,28 @@ def main():
     print("🔍 Detectando campos...")
     campos = detectar_campos(doc)
 
-    print("🧠 Preparando datos...")
-    datos = preparar_datos(json_data, campos)
+    print("🧠 Preparando datos (simulado para ejecución directa)...")
+    # datos = preparar_datos(json_data, campos) # Original call removed
+
+    # Construct 'datos' for standalone script execution
+    # _MATERIA is taken from JSON, others are placeholders
+    datos = {
+        "_MATERIA": json_data.get("materia", "MATERIA NO ESPECIFICADA")
+    }
+
+    print(f"   > _MATERIA 설정됨: {datos['_MATERIA']}")
+
+    # For other fields, simulate that they would be filled by user input in a GUI
+    # or a more interactive script version.
+    for campo in campos:
+        if campo not in datos:
+            datos[campo] = f"[{campo} - valor no ingresado]" # Placeholder value
+            print(f"   > Campo '{campo}' usaría valor de entrada de usuario (ahora es '{datos[campo]}').")
+
+    # Ensure all detected fields have at least a placeholder
+    for campo_docx in campos:
+        if campo_docx not in datos:
+            datos[campo_docx] = f"[{campo_docx} - valor no ingresado]"
 
     print("✍️ Reemplazando texto...")
     reemplazar_campos(doc, datos)
